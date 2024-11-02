@@ -1,0 +1,74 @@
+class Estadio:
+    def __init__(self):
+        # Establecemos el tamaño fijo del estadio a 10x10
+        self.filas = 10
+        self.columnas = 10
+        # Creamos una matriz de "0" que representa asientos disponibles
+        self.asientos = [[0 for _ in range(self.columnas)] for _ in range(self.filas)]
+        # Establecemos el precio base y calculamos los precios de cada fila
+        self.precio_base = 50  # Precio inicial en la primera fila
+        self.precios = [self.precio_base - i * 5 for i in range(self.filas)]
+
+    def mostrar_asientos(self):
+        # Muestra los asientos en formato de texto y los precios de cada fila
+        print("\nMapa de Asientos (0 = Disponible, 1 = Reservado):")
+        for idx, fila in enumerate(self.asientos):
+            print(f"Fila {idx + 1} (Precio: {self.precios[idx]}€):", " ".join(str(asiento) for asiento in fila))
+        print()
+
+    def reservar_asiento(self, fila, columna):
+        if 0 <= fila < self.filas and 0 <= columna < self.columnas:
+            if self.asientos[fila][columna] == 0:
+                self.asientos[fila][columna] = 1
+                print(f"Asiento en fila {fila+1}, columna {columna+1} reservado. Precio: {self.precios[fila]}€")
+            else:
+                print("Error: El asiento ya está reservado.")
+        else:
+            print("Error: Asiento fuera de rango.")
+
+    def cancelar_reserva(self, fila, columna):
+        if 0 <= fila < self.filas and 0 <= columna < self.columnas:
+            if self.asientos[fila][columna] == 1:
+                self.asientos[fila][columna] = 0
+                print(f"Reserva en fila {fila+1}, columna {columna+1} cancelada.")
+            else:
+                print("Error: El asiento no está reservado.")
+        else:
+            print("Error: Asiento fuera de rango.")
+
+# Función principal con el menú interactivo
+def menu_interactivo():
+    estadio = Estadio()
+
+    while True:
+        print("\n--- Menú ---")
+        print("1. Reservar Asientos")
+        print("2. Cancelar Reserva")
+        print("3. Ver Mapa de Asientos")
+        print("4. Salir")
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            cantidad = int(input("¿Cuántos asientos desea reservar? "))
+            for i in range(cantidad):
+                fila = int(input(f"Ingrese la fila del asiento {i+1}: ")) - 1
+                columna = int(input(f"Ingrese la columna del asiento {i+1}: ")) - 1
+                estadio.reservar_asiento(fila, columna)
+        
+        elif opcion == "2":
+            fila = int(input("Ingrese la fila del asiento que desea cancelar: ")) - 1
+            columna = int(input("Ingrese la columna del asiento que desea cancelar: ")) - 1
+            estadio.cancelar_reserva(fila, columna)
+        
+        elif opcion == "3":
+            estadio.mostrar_asientos()
+        
+        elif opcion == "4":
+            print("Saliendo del programa.")
+            break
+        
+        else:
+            print("Opción no válida. Por favor, intente de nuevo.")
+
+# Ejecutar el menú interactivo
+menu_interactivo()
