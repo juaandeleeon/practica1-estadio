@@ -1,0 +1,8 @@
+# practica1-estadio
+## expliacion de como utilizar el algoritmo
+### Para utilizar este programa interactivo de reservas de asientos, primero necesitas ejecutarlo. Al iniciar, verás un menú principal con cuatro opciones disponibles: reservar asientos, cancelar una reserva, ver el mapa de asientos o salir del programa. Puedes elegir cualquier opción ingresando el número correspondiente.
+### Si deseas reservar asientos, selecciona la opción "1". El programa te preguntará cuántos asientos quieres reservar, y después te pedirá que ingreses la fila y la columna de cada asiento uno por uno. Una vez seleccionados, el programa confirmará la reserva e indicará el precio del asiento en función de la fila (la primera fila es la más cara y el precio disminuye en 5 euros en cada fila superior).
+### Para cancelar una reserva, elige la opción "2". El programa te pedirá que ingreses la fila y columna del asiento que quieres liberar. Si el asiento está reservado, se cancelará la reserva; si no, te informará que el asiento ya estaba disponible.
+### Si seleccionas la opción "3", podrás ver el mapa de asientos. Aquí se mostrará el estado actual de cada asiento (disponible o reservado) junto con el precio correspondiente para cada fila. Esto te ayudará a decidir en qué sección del estadio reservar o verificar tus reservas.
+### Finalmente, cuando ya no necesites hacer más operaciones, puedes salir del programa eligiendo la opción "4". Esto cerrará el programa y terminará la sesión de reservas.
+### Este algoritmo es simple y directo, permitiéndote gestionar reservas de manera clara en un estadio de 10x10 asientos con precios diferenciados por fila.
